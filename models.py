@@ -1,0 +1,36 @@
+# models.py
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import (Input, Conv2D, BatchNormalization,
+                                    Activation, MaxPooling2D, Dropout,
+                                    Flatten, Dense)
+def build_emotion_cnn(input_shape=(48,48,1), num_classes=7):
+    inp = Input(shape=input_shape)
+    x = Conv2D(32, (3,3), padding='same')(inp)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = Conv2D(32, (3,3), padding='same')(x)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = MaxPooling2D((2,2))(x)
+    x = Dropout(0.25)(x)
+    x = Conv2D(64, (3,3), padding='same')(x)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = Conv2D(64, (3,3), padding='same')(x)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = MaxPooling2D((2,2))(x)
+    x = Dropout(0.25)(x)
+    x = Conv2D(128, (3,3), padding='same')(x)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = MaxPooling2D((2,2))(x)
+    x = Dropout(0.3)(x)
+    x = Flatten()(x)
+    x = Dense(1024)(x)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+    x = Dropout(0.5)(x)
+    out = Dense(num_classes, activation='softmax')(x)
+    model = Model(inputs=inp, outputs=out)
+    return model
