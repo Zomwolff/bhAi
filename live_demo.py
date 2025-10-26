@@ -14,8 +14,8 @@ import time # For FPS calculation and limiting
 # --- Configuration ---
 # (Label loading logic remains the same as previous version)
 try:
-    from data_preprocessing_fer import EMOTION_LABELS_FER # For FER (7 classes)
-    EMOTION_LABELS = EMOTION_LABELS_FER
+    from data_preprocessing_fer import EMOTION_LABELS # For FER (7 classes)
+    EMOTION_LABELS = EMOTION_LABELS
     NUM_CLASSES = len(EMOTION_LABELS)
     print("Using FER2013 Labels (7 classes)")
 except ImportError:
