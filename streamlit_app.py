@@ -3,8 +3,8 @@ import streamlit as st
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
-from yolo_inference import load_yolo, detect_faces
-from data_preprocessing import EMOTION_LABELS
+from yolo_interface import load_yolo, detect_faces
+from data_preprocessing_fer import EMOTION_LABELS
 
 st.set_page_config(page_title='Live Emotion Detector', layout='wide')
 @st.cache_resource
@@ -14,8 +14,8 @@ def load_models(yolo_path, emotion_path):
     return yolo, emo
 
 
-yolo_path = st.sidebar.text_input('YOLO model path', 'models/yolov8n-face.pt')
-emo_path = st.sidebar.text_input('Emotion model path', 'models/emotion_cnn.h5')
+yolo_path = st.sidebar.text_input('YOLO model path', 'model/yolov8n-face.pt')
+emo_path = st.sidebar.text_input('Emotion model path', 'models/model2.h5')
 conf_thresh = st.sidebar.slider('YOLO confidence', 0.1, 1.0, 0.35)
 
 st.title('Live Face Emotion Detection')

@@ -1,18 +1,3 @@
-Live Face Emotion Detection — Complete
-Codebase
-This document contains a complete, ready-to-use codebase for a live face emotion detection system
-described in the PDF you uploaded. It includes:
-requirements.txt
-README.md (setup + run instructions)
-models.py (CNN definition)
-data_preprocessing.py (FER2013 loader & augmentation)
-train_emotion_cnn.py (training script)
-yolo_inference.py (face detection using Ultralytics YOLO)
-live_demo.py (OpenCV live demo combining YOLO + CNN)
-streamlit_app.py (Streamlit web UI)
-Dockerfile (containerization)
-File: requirements.txt
-python>=3.8
 numpy
 pandas
 opencv-python
